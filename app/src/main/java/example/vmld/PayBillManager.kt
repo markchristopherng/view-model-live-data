@@ -16,8 +16,8 @@ open class PayBillManager {
     open fun getAll(): Single<List<SavedBill>> {
         var list = mutableListOf(
                 SavedBill(1, "Company A", "ABC", "123"),
-                SavedBill(1, "Company B", "DEF", "456"),
-                SavedBill(1, "Company C", "GHI", "789")
+                SavedBill(2, "Company B", "DEF", "456"),
+                SavedBill(3, "Company C", "GHI", "789")
         )
         return Single.just(list)
     }

@@ -1,0 +1,25 @@
+ext.deps = [:]
+def versions = [:]
+
+//gradle build plugins
+versions.kotlin = '1.2.61'
+versions.android_gradle_plugin = "3.2.0-rc03"
+
+//android google libraries
+versions.support = '28.0.0-rc02'    //Must match the SDK compile version.
+versions.arch_core = '1.0.0'
+versions.arch_lifecycle = '1.1.1'
+versions.constraint_layout = '1.1.0'
+
+//Core libraries
+versions.rxjava = '2.2.0'
+versions.rxjava_android = '2.0.2'
+versions.rxlifecycle = '2.2.1'
+
+//java libraries
+versions.commons_io = '2.4'
+
+def deps = [:]
+ext.versions = versions
+
+

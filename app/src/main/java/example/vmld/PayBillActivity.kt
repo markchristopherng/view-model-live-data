@@ -12,7 +12,7 @@ class PayBillActivity : BaseActivity() {
         setContentView(R.layout.activity_pay_bill)
 
         payBillViewModel = getViewModel()
-        //        OR
+        //         OR
         //payBillViewModel.loadBillsRx()
         payBillViewModel.loadBills()
 

@@ -2,18 +2,26 @@
 
 buildscript {
     apply from: 'versions.gradle'
-    ext.kotlin_version = '1.2.61'
+    ext.kotlin_version = '1.2.71'
     repositories {
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://plugins.gradle.org/m2/' }
+        maven { url 'https://maven.google.com'}
+        maven { url 'https://plugins.gradle.org/m2' }
         google()
         jcenter()
     }
     dependencies {
         classpath "com.android.tools.build:gradle:$versions.android_gradle_plugin"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+        classpath "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$versions.detekt_gradle_plugin"
+//        classpath "org.jmailen.gradle:kotlinter-gradle:$versions.kotlinter_gradle_plugin"
     }
 }
 
+
 allprojects {
+//    apply plugin: 'org.jmailen.kotlinter'
     repositories {
         google()
         jcenter()
@@ -26,4 +34,5 @@ task clean(type: Delete) {
 
 subprojects {
     apply from: '../versions.gradle'
+    apply plugin: "io.gitlab.arturbosch.detekt"
 }

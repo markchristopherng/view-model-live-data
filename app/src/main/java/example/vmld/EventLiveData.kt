@@ -1,10 +1,10 @@
 package example.vmld
 
-import android.arch.lifecycle.LifecycleOwner
-import android.arch.lifecycle.MediatorLiveData
-import android.arch.lifecycle.Observer
 import android.os.Handler
 import android.os.Looper
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.Observer
 import java.util.concurrent.atomic.AtomicBoolean
 
 /**

@@ -1,7 +1,6 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
 android {
@@ -42,15 +41,21 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
 
     //Support libs
-    implementation "com.android.support:support-v4:${versions.support}"
-    implementation "com.android.support:appcompat-v7:${versions.support}"
+    implementation "androidx.appcompat:appcompat:$versions.androidx_appcompat"
+    implementation "androidx.legacy:legacy-support-v4:$versions.androidx_legacy_support_v4"
 
     // ViewModel and LiveData
-    implementation "android.arch.lifecycle:extensions:$versions.arch_lifecycle"
-    annotationProcessor "android.arch.lifecycle:compiler:$versions.arch_lifecycle"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$versions.androidx_lifecycle_livedata_ktx"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.androidx_lifecycle_viewmodel_ktx"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$versions.androidx_lifecycle_runtime_ktx"
+
+    implementation "androidx.lifecycle:lifecycle-extensions:$versions.androidx_lifecycle_extensions"
+    kapt "androidx.lifecycle:lifecycle-compiler:$versions.androidx_lifecycle_compiler"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$versions.androidx_lifecycle_runtime_ktx"
+
     implementation "commons-io:commons-io:$versions.commons_io"
 
     // constraint layout
-    implementation "com.android.support.constraint:constraint-layout:$versions.constraint_layout"
+    implementation "com.android.support.constraint:constraint-layout:$versions.androidx_constraintlayout"
 
 }

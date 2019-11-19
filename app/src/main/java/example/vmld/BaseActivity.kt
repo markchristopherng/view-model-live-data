@@ -1,9 +1,9 @@
 package example.vmld
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 
 abstract class BaseActivity : AppCompatActivity() {
 

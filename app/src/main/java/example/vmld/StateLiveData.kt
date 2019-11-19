@@ -1,6 +1,6 @@
 package example.vmld
 
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.MutableLiveData
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Maybe

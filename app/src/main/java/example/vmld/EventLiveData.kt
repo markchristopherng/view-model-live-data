@@ -23,10 +23,9 @@ class EventLiveData<T> : MediatorLiveData<T>() {
      */
     fun observeEvent(owner: LifecycleOwner, observer: Observer<T>) {
         super.observe(owner, Observer {
-            if (it != null && !isRead.get()) {
-                observer.onChanged(it)
-                isRead.set(true)
-            }
+            if (it != null && isRead.compareAndSet(false, true)) {
+               observer.onChanged(it)
+           }    
         })
     }
 

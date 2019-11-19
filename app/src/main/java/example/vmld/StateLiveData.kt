@@ -8,6 +8,10 @@ import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 /**
  * live data containing state information and easy for RxJava integration
@@ -101,6 +105,33 @@ class StateLiveData<T> : MutableLiveData<T>() {
 
     fun postState(s: State) {
         state.postValue(s)
+    }
+
+    fun loadWith(scope: CoroutineScope, block: suspend () -> T) {
+        scope.launch(Dispatchers.IO) {
+            try {
+                postLoading()
+                postValueAndSuccess(block())
+            } catch (throwable: Throwable) {
+                if (throwable !is CancellationException) {
+                    postError(throwable)
+                }
+            }
+        }
+    }
+
+    fun executeWith(scope: CoroutineScope, block: suspend () -> Unit) {
+        scope.launch(Dispatchers.IO) {
+            try {
+                postLoading()
+                block()
+                postSuccess()
+            } catch (throwable: Throwable) {
+                if (throwable !is CancellationException) {
+                    postError(throwable)
+                }
+            }
+        }
     }
 
     /**
